@@ -1,0 +1,57 @@
+{
+  "id": "moc-map",
+  "name": "MOC 知识地图",
+  "nameI18n": {
+    "zh-CN": "MOC 知识地图",
+    "en-US": "MOC Knowledge Map",
+    "ja-JP": "MOC ナレッジマップ"
+  },
+  "icon": "🗺️",
+  "type": "aapp",
+  "version": "1",
+  "developer": "violin",
+  "description": "基于 remio 全知识库构建 M.O.C 知识地图，提供主题地图可视化、跨域深度总结、自动知识发现。支持 Collection、Folder、搜索结果集作为输入域，自动发现知识关联并生成结构化知识地图。",
+  "descriptionI18n": {
+    "zh-CN": "基于 remio 全知识库构建 M.O.C 知识地图，提供主题地图可视化、跨域深度总结、自动知识发现",
+    "en-US": "Build MOC knowledge maps from your entire remio knowledge base with topic visualization, cross-domain synthesis, and auto-discovery",
+    "ja-JP": "remio 全ナレッジベースからMOCナレッジマップを構築し、トピックの可視化、クロスドメイン合成、自動発見を提供"
+  },
+  "activationPrompt": "Open the MOC 知识地图 aapp to explore your knowledge landscape.",
+  "runtime": {
+    "type": "embedded"
+  },
+  "content_action_extensions": {
+    "type": "static",
+    "items": [
+      {
+        "label": "🗺️ 加入知识地图",
+        "labelI18n": {
+          "zh-CN": "🗺️ 加入知识地图",
+          "en-US": "🗺️ Add to Knowledge Map",
+          "ja-JP": "🗺️ ナレッジマップに追加"
+        },
+        "action": {
+          "aapp_id": "moc-map",
+          "method": "POST",
+          "path": "/build_moc_from_note_ui"
+        }
+      }
+    ]
+  },
+  "shortcuts": {
+    "type": "static",
+    "items": [
+      {
+        "name": "moc",
+        "path": "/build_moc_shortcut",
+        "method": "POST",
+        "description": "基于选定内容构建 MOC 知识地图",
+        "descriptionI18n": {
+          "zh-CN": "基于选定内容构建 MOC 知识地图",
+          "en-US": "Build a MOC knowledge map from selected content",
+          "ja-JP": "選択したコンテンツからMOCナレッジマップを構築"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+# Dependencies
+# remio SDK (bundled with remio runtime, no pip install needed)
+remio_sdk
+
+# Standard library (no install needed)
+json
+os
+time
+uuid
+datetime

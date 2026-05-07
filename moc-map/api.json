@@ -1,0 +1,125 @@
+{
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/",
+      "type": "ui",
+      "description": "知识全景首页：展示 Collections、同步文件夹概览、最近发现。"
+    },
+    {
+      "method": "POST",
+      "path": "/domain_map_ui",
+      "type": "ui",
+      "description": "展示选定域（Collection/Folder/搜索结果）内的主题分布和 MOC 结构。",
+      "params": {
+        "domain_type": { "type": "string", "required": true, "description": "collection | folder | search" },
+        "domain_id": { "type": "string", "required": false, "description": "Collection ID 或文件夹路径" },
+        "domain_name": { "type": "string", "required": true, "description": "域名称，用于展示" },
+        "query": { "type": "string", "required": false, "description": "搜索型域的查询词" }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/build_moc_ui",
+      "type": "ui",
+      "description": "构建 MOC：分析指定范围内的笔记，生成结构化知识地图。不传参数时显示域选择表单。",
+      "params": {
+        "domain_type": { "type": "string", "required": false },
+        "domain_id": { "type": "string", "required": false },
+        "domain_name": { "type": "string", "required": false },
+        "query": { "type": "string", "required": false },
+        "depth": { "type": "string", "required": false, "description": "分析深度：overview | standard | deep" },
+        "include_external": { "type": "boolean", "required": false, "description": "是否发现与域外知识的关联" }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/build_moc_from_note_ui",
+      "type": "ui",
+      "description": "从内容动作扩展触发，基于单条笔记上下文构建 MOC。"
+    },
+    {
+      "method": "POST",
+      "path": "/build_moc_shortcut",
+      "type": "ui",
+      "description": "从 <<moc 快捷命令触发构建 MOC。"
+    },
+    {
+      "method": "POST",
+      "path": "/cross_summary_ui",
+      "type": "ui",
+      "description": "跨域深度总结：选定 2+ 个域或关键词，AI 合成跨域分析报告。不传参数时显示域选择表单。",
+      "params": {
+        "domains": { "type": "array", "required": false, "description": "域列表 [{domain_type, domain_id, domain_name}]" },
+        "topic": { "type": "string", "required": false, "description": "聚焦主题（可选）" },
+        "time_range": { "type": "string", "required": false, "description": "时间范围，如 last_week, last_month" }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/discover_ui",
+      "type": "ui",
+      "description": "知识发现：扫描最近新增内容，自动发现跨域关联和弱信号。",
+      "params": {
+        "time_range": { "type": "string", "required": false, "description": "扫描时间范围：last_week | last_month" },
+        "scope": { "type": "string", "required": false, "description": "扫描范围：all | collections | folder" }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/topic_timeline_ui",
+      "type": "ui",
+      "description": "话题时间线：输入话题关键词，展示其在不同域的讨论轨迹。不传参数时显示输入表单。",
+      "params": {
+        "topic": { "type": "string", "required": false, "description": "话题关键词" },
+        "domains": { "type": "array", "required": false, "description": "限定域（可选）" }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/moc_list_ui",
+      "type": "ui",
+      "description": "我的 MOC 列表：所有已生成的 MOC 笔记。"
+    },
+    {
+      "method": "POST",
+      "path": "/save_moc_ui",
+      "type": "ui",
+      "description": "保存 MOC 结果为 remio 笔记并关联到 Collection。",
+      "params": {
+        "history_id": { "type": "string", "required": true },
+        "collection_name": { "type": "string", "required": false, "description": "要关联的 Collection 名称" }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/history_ui",
+      "type": "ui",
+      "description": "查看 MOC 生成历史。"
+    },
+    {
+      "method": "POST",
+      "path": "/detail_ui",
+      "type": "ui",
+      "description": "查看一条 MOC 历史详情。",
+      "params": {
+        "history_id": { "type": "string", "required": true }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/delete_ui",
+      "type": "ui",
+      "description": "删除一条 MOC 历史。",
+      "params": {
+        "history_id": { "type": "string", "required": true }
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/_menu",
+      "type": "ui",
+      "description": "动态菜单。"
+    }
+  ]
+}
